@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SabroFit - Comé Bien, Más Fácilmente</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2D9D78', secondary: '#CCFF00' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=A%20vibrant%20and%20fresh%20healthy%20food%20scene%20with%20a%20clean%2C%20bright%20background.%20The%20image%20shows%20various%20colorful%20organic%20vegetables%2C%20fruits%2C%20and%20prepared%20healthy%20meals%20arranged%20beautifully%20on%20a%20white%20surface.%20The%20left%20side%20has%20a%20smooth%20gradient%20to%20white%20for%20text%20placement.%20The%20composition%20looks%20modern%2C%20appetizing%2C%20and%20professional%20with%20natural%20lighting%20highlighting%20the%20freshness%20of%20the%20ingredients.&width=1600&height=800&seq=12345&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Header -->
+    <header class="w-full bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- El logo con texto -->
+            <div class="flex items-center gap-2">
+                <!-- Logo -->
+                <img src="./img/SabroFIT Logo (edit).svg" alt="Logo SabroFit" class="w-10 h-10" />
+                <!-- Texto -->
+                <div class="text-3xl font-bold" style="font-family: 'Poppins', sans-serif;">
+                    <span class="text-[#180700]">sabro</span><span class="text-[#c2f409] italic">fit</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#menu" class="text-gray-800 hover:text-primary font-medium">Menú</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium">Nosotros</a>
+                <a href="#how-it-works" class="text-gray-800 hover:text-primary font-medium">Cómo Funciona</a>
+                <a href="#reviews" class="text-gray-800 hover:text-primary font-medium">Opiniones</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 flex items-center justify-center md:hidden cursor-pointer">
+                    <i class="ri-menu-line text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section w-full relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+        <div class="container mx-auto px-4 py-24 md:py-32 relative">
+            <div class="max-w-xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Comer bien, más fácil</h1>
+                <p class="text-lg text-gray-700 mb-8">Comidas deliciosas y nutritivas entregadas en tu puerta. Diseñadas
+                    por nutricionistas, preparadas por chefs, disfrutadas por vos.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="./menu.html">
+                        <button
+                            class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                            Explorá Nuestro Menú
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Products -->
+    <section id="menu" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestros Platos Destacados</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Descubrí nuestras comidas elaboradas por chefs que combinan
+                    nutrición y sabor para un estilo de vida más saludable.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%20beautifully%20plated%20Mediterranean%20bowl%20with%20quinoa%20base%2C%20grilled%20chicken%2C%20colorful%20vegetables%2C%20olives%2C%20feta%20cheese%2C%20and%20a%20drizzle%20of%20olive%20oil.%20The%20dish%20is%20presented%20on%20a%20clean%20white%20plate%20against%20a%20minimalist%20light%20background.%20The%20food%20looks%20fresh%2C%20vibrant%2C%20and%20professionally%20styled%20with%20natural%20lighting%20highlighting%20the%20textures%20and%20colors%20of%20the%20ingredients.&width=600&height=400&seq=12346&orientation=landscape"
+                            alt="Mediterranean Bowl" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Mediterranean Bowl</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Quinoa, grilled pollo, mixeadas arvejas, cherry tomates, pepinos,
+                            aceitunas, y queso feta con aderezo de limón y hierbas.</p>
+                        <div class="flex items-center">
+                            <div class="flex items-center text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">4.8 (124)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%20vibrant%20and%20fresh%20Asian-inspired%20salmon%20poke%20bowl%20presented%20on%20a%20clean%20white%20plate%20against%20a%20minimalist%20light%20background.%20The%20bowl%20features%20perfectly%20seared%20salmon%20pieces%2C%20avocado%20slices%2C%20edamame%2C%20cucumber%2C%20carrots%2C%20and%20purple%20cabbage%20arranged%20over%20a%20bed%20of%20brown%20rice.%20A%20light%20soy-based%20dressing%20is%20drizzled%20on%20top.%20The%20food%20looks%20fresh%2C%20colorful%2C%20and%20professionally%20styled%20with%20natural%20lighting%20highlighting%20the%20textures%20and%20colors%20of%20the%20ingredients.&width=600&height=400&seq=12347&orientation=landscape"
+                            alt="Salmon Poke Bowl" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Salmon Poke Bowl</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Arroz integral, salmón fresco, aguacate, edamame, pepino,
+                            zanahorias y algas con salsa ponzu.</p>
+                        <div class="flex items-center">
+                            <div class="flex items-center text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">5.0 (89)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%20beautifully%20arranged%20plant-based%20protein%20bowl%20presented%20on%20a%20clean%20white%20plate%20against%20a%20minimalist%20light%20background.%20The%20bowl%20features%20roasted%20sweet%20potatoes%2C%20chickpeas%2C%20kale%2C%20quinoa%2C%20avocado%2C%20and%20a%20variety%20of%20colorful%20vegetables%20with%20a%20tahini%20dressing%20drizzled%20on%20top.%20The%20food%20looks%20fresh%2C%20vibrant%2C%20and%20professionally%20styled%20with%20natural%20lighting%20highlighting%20the%20textures%20and%20colors%20of%20the%20ingredients.&width=600&height=400&seq=12348&orientation=landscape"
+                            alt="Plant Protein Bowl" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Tazón de proteína vegetal</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Quinoa, boniatos asados, garbanzos, col rizada, aguacate y
+                            semillas mixtas con aderezo de tahini.</p>
+                        <div class="flex items-center">
+                            <div class="flex items-center text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">4.2 (76)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="./menu.html"
+                    data-readdy="true">
+                    <button
+                        class="bg-white border border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition whitespace-nowrap">
+                        Mirá nuestro Menú
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Benefits Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Por qué elegir SabroFit?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nos comprometemos a hacer que la alimentación saludable sea
+                    accesible, deliciosa y conveniente para todos.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-leaf-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Ingredientes Frescos</h3>
+                    <p class="text-gray-600">Utilizamos ingredientes orgánicos de producción local para asegurar la
+                        máxima nutrición y sabor en cada comida.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-heart-pulse-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Aprobado por Nutricionistas</h3>
+                    <p class="text-gray-600">Cada comida está diseñada por nutricionistas certificados para proporcionar
+                        una nutrición balanceada y óptima para tu salud.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-time-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Entrega Conveniente</h3>
+                    <p class="text-gray-600">Disfrutá de la entrega en tu puerta de comidas frescas y listas para comer
+                        que se adaptan perfectamente a tu estilo de vida ocupado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Cómo Funciona</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Recibir comidas saludables es simple con nuestro proceso de 3
+                    pasos.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm relative">
+                    <div
+                        class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center absolute -top-6 left-8">
+                        <span class="font-bold text-xl">1</span>
+                    </div>
+                    <div class="pt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Elegí Tus Comidas</h3>
+                        <p class="text-gray-600">Navegá por nuestro menú y seleccioná las comidas que coincidan con tus
+                            preferencias y objetivos dietéticos.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm relative">
+                    <div
+                        class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center absolute -top-6 left-8">
+                        <span class="font-bold text-xl">2</span>
+                    </div>
+                    <div class="pt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Preparamos y Entregamos</h3>
+                        <p class="text-gray-600">Nuestros chefs preparan tus comidas frescas y las entregamos en tu
+                            puerta en el horario que elijas.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm relative">
+                    <div
+                        class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center absolute -top-6 left-8">
+                        <span class="font-bold text-xl">3</span>
+                    </div>
+                    <div class="pt-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Calentá y Disfrutá</h3>
+                        <p class="text-gray-600">Simplemente calentá tu comida por unos minutos cuando estés listo para
+                            comer y disfrutá de una comida nutritiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Customer Reviews -->
+    <section id="reviews" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Lo Que Dicen Nuestros Clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">No solo tomés nuestra palabra. Esto es lo que dicen nuestros
+                    clientes satisfechos.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center text-yellow-400 mb-4">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">"SabroFit ha transformado por completo mis pausas para el almuerzo.
+                        Las comidas son deliciosas, saciantes y me encanta saber que estoy comiendo algo saludable sin
+                        ningún esfuerzo por mi parte."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-user-line text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Emilio Rodriguez</h4>
+                            <p class="text-sm text-gray-500">Estudiante de Derecho</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center text-yellow-400 mb-4">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-half-fill"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Como entrenador de fitness, recomiendo SabroFit a todos mis clientes.
+                        Los macronutrientes están perfectamente equilibrados y el sabor es increíble. Es muy práctico
+                        para mi apretada agenda entre sesiones de entrenamiento."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-user-line text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Carlos Lopez</h4>
+                            <p class="text-sm text-gray-500">Personal Trainer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center text-yellow-400 mb-4">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-line"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">"He probado varios servicios de entrega de comida a domicilio, pero
+                        SabroFit destaca por su calidad y frescura. La variedad me mantiene entusiasmado con la
+                        alimentación saludable, y he perdido 7 kilos sin sentirme privado."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-user-line text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Sophia Martinez</h4>
+                            <p class="text-sm text-gray-500">Empleada Judicial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Listo para Comenzar Tu Viaje de Alimentación
+                    Saludable?</h2>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Unite a miles de clientes satisfechos que transformaron
+                    sus hábitos alimenticios con las comidas deliciosas y nutritivas de SabroFit.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                        class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                        Pedí Tu Primera Comida
+                    </button>
+                    <button
+                        class="bg-white border border-gray-300 text-gray-800 px-8 py-3 !rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+                        Ver Planes de Comidas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Instagram Feed -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Seguinos en Instagram</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Descubrí más inspiración saludable y mantente al día con
+                    nuestras últimas creaciones.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Instagram Post 1 -->
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20beautifully%20plated%20healthy%20meal%20with%20vibrant%20colors%2C%20featuring%20grilled%20chicken%2C%20quinoa%2C%20and%20roasted%20vegetables%20arranged%20artistically%20on%20a%20white%20plate%20with%20natural%20lighting%20and%20a%20clean%20background.%20Professional%20food%20photography%20style.&width=600&height=600&seq=12349&orientation=squarish"
+                        alt="Instagram Post 1"
+                        class="w-full h-full object-cover transition duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="flex items-center justify-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-2"></i>
+                                    <span>1.2k</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-2"></i>
+                                    <span>84</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instagram Post 2 -->
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20colorful%20smoothie%20bowl%20topped%20with%20fresh%20fruits%2C%20granola%2C%20and%20edible%20flowers.%20Shot%20from%20above%20on%20a%20light%20marble%20surface%20with%20natural%20lighting%20and%20minimalist%20styling.%20Professional%20food%20photography%20style.&width=600&height=600&seq=12350&orientation=squarish"
+                        alt="Instagram Post 2"
+                        class="w-full h-full object-cover transition duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="flex items-center justify-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-2"></i>
+                                    <span>956</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-2"></i>
+                                    <span>62</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instagram Post 3 -->
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20healthy%20meal%20prep%20scene%20with%20multiple%20containers%20filled%20with%20balanced%20portions%20of%20lean%20proteins%2C%20whole%20grains%2C%20and%20colorful%20vegetables.%20Clean%2C%20organized%20layout%20with%20natural%20lighting.%20Professional%20food%20photography%20style.&width=600&height=600&seq=12351&orientation=squarish"
+                        alt="Instagram Post 3"
+                        class="w-full h-full object-cover transition duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="flex items-center justify-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-2"></i>
+                                    <span>843</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-2"></i>
+                                    <span>45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instagram Post 4 -->
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20fresh%20salad%20with%20grilled%20salmon%2C%20avocado%2C%20and%20mixed%20greens%2C%20garnished%20with%20microgreens%20and%20seeds.%20Served%20on%20a%20modern%20ceramic%20plate%20with%20natural%20lighting%20and%20clean%20styling.%20Professional%20food%20photography%20style.&width=600&height=600&seq=12352&orientation=squarish"
+                        alt="Instagram Post 4"
+                        class="w-full h-full object-cover transition duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="flex items-center justify-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-2"></i>
+                                    <span>1.5k</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-2"></i>
+                                    <span>93</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="https://www.instagram.com/sabrofit" target="_blank"
+                    class="inline-flex items-center text-primary hover:text-primary/80 transition">
+                    <span class="font-medium">Seguinos en Instagram</span>
+                    <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Contactanos</h2>
+                    <p class="text-gray-600">¿Tenés preguntas o comentarios? Nos encantaría escucharte. Completá el
+                        formulario y te responderemos lo antes posible.</p>
+                </div>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+                            <input type="text" placeholder="Ingresá tu nombre"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary text-gray-800">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Apellido</label>
+                            <input type="text" placeholder="Ingresá tu apellido"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary text-gray-800">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Correo Electrónico</label>
+                        <input type="email" placeholder="Ingresá tu correo electrónico"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary text-gray-800">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+                        <input type="tel" placeholder="Ingresá tu número de teléfono"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary text-gray-800">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Asunto</label>
+                        <select
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary text-gray-800 pr-8">
+                            <option value="">Seleccioná un asunto</option>
+                            <option value="general">Consulta General</option>
+                            <option value="support">Atención al Cliente</option>
+                            <option value="partnership">Oportunidades de Asociación</option>
+                            <option value="feedback">Comentarios</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+                        <textarea rows="6" placeholder="Ingresá tu mensaje"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary text-gray-800"></textarea>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input type="checkbox" class="w-4 h-4 border border-gray-300 rounded">
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-gray-600">Acepto recibir comunicaciones de marketing de SabroFit.
+                                Puedes darte de baja en cualquier momento.</p>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="text-3xl font-bold" style="font-family: 'Poppins', sans-serif;">
+                        <span class="text-[#FFFFFF]">sabro</span><span class="text-[#c2f409] italic">fit</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Comidas deliciosas y nutritivas a domicilio. Haciendo que comer sano
+                        sea fácil y placentero.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-facebook-fill text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-instagram-line text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-twitter-x-line text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Nuestro Menú</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cómo Funciona</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Planes de Comidas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sobre Nosotros</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Trabajá con Nosotros</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contactanos</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+                                <i class="ri-map-pin-line text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-400">123 Av Siempreviva, Springfield, CP 5500</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                <i class="ri-phone-line text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-400">(+54) 261-234 456 78</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                <i class="ri-mail-line text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-400">hola@sabrofit.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Business Hours -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Horarios de Atención</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">Lunes a Viernes:</span>
+                            <span class="text-gray-400">8:00 a 20:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">Sábados:</span>
+                            <span class="text-gray-400">9:00 a 19:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">Domingos:</span>
+                            <span class="text-gray-400">10:00 a 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 SabroFit. Todos los derechos reservados.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition">Política de Privacidad</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition">Términos de Servicio</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition">Política de Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/+5492615106696" target="_blank"
+            class="flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:bg-opacity-90 transition-all">
+            <i class="ri-whatsapp-line text-white text-2xl"></i>
+        </a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.ri-menu-line').parentElement;
+            const nav = document.querySelector('nav');
+            menuButton.addEventListener('click', function () {
+                if (nav.classList.contains('hidden')) {
+                    nav.classList.remove('hidden');
+                    nav.classList.add('flex', 'flex-col', 'absolute', 'top-16', 'right-4', 'bg-white', 'shadow-lg', 'p-4', 'rounded-lg', 'space-y-4', 'w-48');
+                } else {
+                    nav.classList.add('hidden');
+                    nav.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'right-4', 'bg-white', 'shadow-lg', 'p-4', 'rounded-lg', 'space-y-4', 'w-48');
+                }
+            });
+            // Contact form submission
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData);
+                    console.log('Form submitted:', data);
+                    contactForm.reset();
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                    successMessage.textContent = '¡Mensaje enviado con éxito!';
+                    document.body.appendChild(successMessage);
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

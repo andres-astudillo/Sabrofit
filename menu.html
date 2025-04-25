@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SabroFit - Menú Completo</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2D9D78', secondary: '#CCFF00' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.2s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .custom-checkbox:checked {
+            background-color: #2D9D78;
+            border-color: #2D9D78;
+        }
+
+        .custom-checkbox:checked::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7' /%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .custom-radio {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 50%;
+            outline: none;
+            transition: all 0.2s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .custom-radio:checked {
+            border-color: #2D9D78;
+        }
+
+        .custom-radio:checked::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #2D9D78;
+            border-radius: 50%;
+        }
+
+        .nutrition-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .nutrition-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .nutrition-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .nutrition-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.nutrition-slider {
+            background-color: #2D9D78;
+        }
+
+        input:checked+.nutrition-slider:before {
+            transform: translateX(26px);
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #2D9D78;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #2D9D78;
+            cursor: pointer;
+            border: none;
+        }
+
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="w-full bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- El logo con texto -->
+            <div class="flex items-center gap-2">
+                <!-- Logo -->
+                <img src="./img/SabroFIT Logo (edit).svg" alt="Logo SabroFit" class="w-10 h-10" />
+                <!-- Texto -->
+                <div class="text-3xl font-bold" style="font-family: 'Poppins', sans-serif;">
+                    <span class="text-[#180700]">sabro</span><span class="text-[#c2f409] italic">fit</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="./index.html"
+                    data-readdy="true" class="text-gray-800 hover:text-primary font-medium">Inicio</a>
+                <a href="#" class="text-primary font-medium">Menú</a>
+                <a href="#" class="text-gray-800 hover:text-primary font-medium">Nosotros</a>
+                <a href="#" class="text-gray-800 hover:text-primary font-medium">Cómo Funciona</a>
+                <a href="#" class="text-gray-800 hover:text-primary font-medium">Opiniones</a>
+                <a href="#" class="text-gray-800 hover:text-primary font-medium">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 flex items-center justify-center md:hidden cursor-pointer">
+                    <i class="ri-menu-line text-2xl"></i>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+    <!-- Page Title -->
+    <section class="bg-primary/10 py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Nuestro Menú Completo</h1>
+                    <p class="text-gray-600 mt-2">Descubre todas nuestras opciones saludables y deliciosas</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="./index.html"
+                        data-readdy="true" class="inline-flex items-center text-primary hover:text-primary/80">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>Volver a la página principal</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Menu Items -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520plated%2520Mediterranean%2520bowl%2520with%2520quinoa%2520base%252C%2520grilled%2520chicken%252C%2520colorful%2520vegetables%252C%2520olives%252C%2520feta%2520cheese%252C%2520and%2520a%2520drizzle%2520of%2520olive%2520oil.%2520The%2520dish%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background.%2520The%2520food%2520looks%2520fresh%252C%2520vibrant%252C%2520and%2520professionally%2520styled%2520with%2520natural%2520lighting%2520highlighting%2520the%2520textures%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=12346&orientation=landscape"
+                            alt="Mediterranean Bowl" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-primary/90 text-white text-xs px-2 py-1 rounded-full">Popular</span>
+                            <span class="bg-secondary/90 text-gray-800 text-xs px-2 py-1 rounded-full">Alto en
+                                Proteínas</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Bowl Mediterráneo</h3>
+                            <span class="text-lg font-bold text-primary">$12.90</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Quinoa, pollo a la parrilla, mix de verdes, tomates cherry,
+                            pepino, aceitunas y queso feta con aderezo de hierbas y limón.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">450 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">32g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">45g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">15g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-fill"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.8 (124)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 2 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520vibrant%2520and%2520fresh%2520Asian-inspired%2520salmon%2520poke%2520bowl%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background.%2520The%2520bowl%2520features%2520perfectly%2520seared%2520salmon%2520pieces%252C%2520avocado%2520slices%252C%2520edamame%252C%2520cucumber%252C%2520carrots%252C%2520and%2520purple%2520cabbage%2520arranged%2520over%2520a%2520bed%2520of%2520brown%2520rice.%2520A%2520light%2520soy-based%2520dressing%2520is%2520drizzled%2520on%2520top.%2520The%2520food%2520looks%2520fresh%252C%2520colorful%252C%2520and%2520professionally%2520styled%2520with%2520natural%2520lighting%2520highlighting%2520the%2520textures%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=12347&orientation=landscape"
+                            alt="Salmon Poke Bowl" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-primary/90 text-white text-xs px-2 py-1 rounded-full">Bestseller</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Bowl de Salmón Poke</h3>
+                            <span class="text-lg font-bold text-primary">$14.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Arroz integral, salmón fresco, aguacate, edamame, pepino,
+                            zanahorias y algas con salsa ponzu.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">520 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">28g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">60g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">18g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">5.0 (89)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 3 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520arranged%2520plant-based%2520protein%2520bowl%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background.%2520The%2520bowl%2520features%2520roasted%2520sweet%2520potatoes%252C%2520chickpeas%252C%2520kale%252C%2520quinoa%252C%2520avocado%252C%2520and%2520a%2520variety%2520of%2520colorful%2520vegetables%2520with%2520a%2520tahini%2520dressing%2520drizzled%2520on%2520top.%2520The%2520food%2520looks%2520fresh%252C%2520vibrant%252C%2520and%2520professionally%2520styled%2520with%2520natural%2520lighting%2520highlighting%2520the%2520textures%2520and%2520colors%2520of%2520the%2520ingredients.&width=600&height=400&seq=12348&orientation=landscape"
+                            alt="Plant Protein Bowl" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-green-500/90 text-white text-xs px-2 py-1 rounded-full">Vegano</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Bowl de Proteína Vegetal</h3>
+                            <span class="text-lg font-bold text-primary">$11.90</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Quinoa, batatas asadas, garbanzos, kale, aguacate y mix de
+                            semillas con aderezo de tahini.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">480 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">18g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">65g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">16g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.2 (76)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 4 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520plated%2520avocado%2520toast%2520breakfast%2520with%2520poached%2520eggs%2520on%2520top%2520of%2520smashed%2520avocado%2520on%2520whole%2520grain%2520bread.%2520Garnished%2520with%2520microgreens%252C%2520cherry%2520tomatoes%252C%2520and%2520a%2520sprinkle%2520of%2520red%2520pepper%2520flakes.%2520Served%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background%2520with%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients.&width=600&height=400&seq=12353&orientation=landscape"
+                            alt="Avocado Toast" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-yellow-500/90 text-white text-xs px-2 py-1 rounded-full">Desayuno</span>
+                            <span class="bg-blue-500/90 text-white text-xs px-2 py-1 rounded-full">Vegetariano</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Tostada de Aguacate</h3>
+                            <span class="text-lg font-bold text-primary">$9.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pan integral tostado con aguacate, huevos pochados, tomates cherry
+                            y microgreens. Servido con limón.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">380 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">15g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">30g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">22g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-fill"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.6 (92)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 5 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520plated%2520grilled%2520chicken%2520salad%2520with%2520mixed%2520greens%252C%2520cherry%2520tomatoes%252C%2520cucumber%252C%2520red%2520onion%252C%2520avocado%252C%2520and%2520a%2520light%2520vinaigrette%2520dressing.%2520The%2520chicken%2520is%2520perfectly%2520grilled%2520with%2520visible%2520grill%2520marks.%2520Served%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background%2520with%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients.&width=600&height=400&seq=12354&orientation=landscape"
+                            alt="Grilled Chicken Salad" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-purple-500/90 text-white text-xs px-2 py-1 rounded-full">Sin Gluten</span>
+                            <span class="bg-red-500/90 text-white text-xs px-2 py-1 rounded-full">Bajo en Carbs</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Ensalada de Pollo Grillado</h3>
+                            <span class="text-lg font-bold text-primary">$12.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Mix de verdes, pollo grillado, tomates cherry, pepino, cebolla
+                            roja, aguacate y vinagreta de limón y hierbas.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">320 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">28g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">12g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">18g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.3 (68)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 6 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520colorful%2520and%2520refreshing%2520fruit%2520smoothie%2520bowl%2520topped%2520with%2520sliced%2520banana%252C%2520berries%252C%2520granola%252C%2520chia%2520seeds%252C%2520and%2520coconut%2520flakes.%2520The%2520smoothie%2520base%2520is%2520a%2520vibrant%2520purple-pink%2520color%2520from%2520berries.%2520Served%2520in%2520a%2520clean%2520white%2520bowl%2520against%2520a%2520minimalist%2520light%2520background%2520with%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients.&width=600&height=400&seq=12355&orientation=landscape"
+                            alt="Berry Smoothie Bowl" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-yellow-500/90 text-white text-xs px-2 py-1 rounded-full">Desayuno</span>
+                            <span class="bg-green-500/90 text-white text-xs px-2 py-1 rounded-full">Vegano</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Bowl de Smoothie de Frutos Rojos</h3>
+                            <span class="text-lg font-bold text-primary">$10.90</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Base de smoothie de frutos rojos con plátano, toppings de granola,
+                            semillas de chía, coco rallado y frutas frescas.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">410 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">8g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">75g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">10g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.9 (105)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 7 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520plated%2520turkey%2520and%2520avocado%2520wrap%2520cut%2520in%2520half%2520to%2520show%2520the%2520colorful%2520fillings%2520inside.%2520The%2520wrap%2520contains%2520sliced%2520turkey%2520breast%252C%2520fresh%2520avocado%252C%2520lettuce%252C%2520tomato%252C%2520and%2520a%2520light%2520spread.%2520Served%2520on%2520a%2520clean%2520white%2520plate%2520with%2520a%2520side%2520of%2520mixed%2520greens.%2520Shot%2520against%2520a%2520minimalist%2520light%2520background%2520with%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients.&width=600&height=400&seq=12356&orientation=landscape"
+                            alt="Turkey Avocado Wrap" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-orange-500/90 text-white text-xs px-2 py-1 rounded-full">Almuerzo</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Wrap de Pavo y Aguacate</h3>
+                            <span class="text-lg font-bold text-primary">$11.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Wrap integral con pechuga de pavo, aguacate, lechuga, tomate y
+                            aderezo de yogur. Servido con ensalada mixta.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">420 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">25g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">40g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">18g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-fill"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.7 (83)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 8 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520plated%2520grilled%2520salmon%2520fillet%2520with%2520roasted%2520vegetables%2520including%2520asparagus%252C%2520cherry%2520tomatoes%252C%2520and%2520zucchini.%2520The%2520salmon%2520has%2520perfect%2520grill%2520marks%2520and%2520is%2520garnished%2520with%2520fresh%2520herbs%2520and%2520lemon.%2520Served%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background%2520with%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients.&width=600&height=400&seq=12357&orientation=landscape"
+                            alt="Grilled Salmon" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-indigo-500/90 text-white text-xs px-2 py-1 rounded-full">Cena</span>
+                            <span class="bg-purple-500/90 text-white text-xs px-2 py-1 rounded-full">Sin Gluten</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Salmón Grillado con Vegetales</h3>
+                            <span class="text-lg font-bold text-primary">$16.90</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Filete de salmón grillado con vegetales asados (espárragos,
+                            tomates cherry, calabacín) y aliño de limón y hierbas.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">430 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">35g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">15g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">25g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-fill"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.8 (112)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 9 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520refreshing%2520green%2520detox%2520smoothie%2520in%2520a%2520clear%2520glass%2520with%2520a%2520reusable%2520straw.%2520The%2520smoothie%2520is%2520a%2520vibrant%2520green%2520color%2520from%2520spinach%2520and%2520kale%252C%2520with%2520visible%2520pieces%2520of%2520cucumber%2520and%2520apple.%2520Garnished%2520with%2520a%2520mint%2520leaf.%2520Shot%2520against%2520a%2520minimalist%2520light%2520background%2520with%2520natural%2520lighting%2520highlighting%2520the%2520fresh%2520ingredients.&width=600&height=400&seq=12358&orientation=landscape"
+                            alt="Green Detox Smoothie" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-3 left-3 flex space-x-2">
+                            <span class="bg-teal-500/90 text-white text-xs px-2 py-1 rounded-full">Bebida</span>
+                            <span class="bg-green-500/90 text-white text-xs px-2 py-1 rounded-full">Vegano</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Smoothie Detox Verde</h3>
+                            <span class="text-lg font-bold text-primary">$8.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Smoothie de espinaca, kale, pepino, manzana verde, jengibre y
+                            limón. Refrescante y lleno de nutrientes.</p>
+                        <!-- Nutritional Info -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-fire-line text-orange-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">180 kcal</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-meat-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">3g prot</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-bread-line text-amber-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">35g carb</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-drop-line text-blue-500"></i>
+                                </div>
+                                <span class="text-sm text-gray-700">2g grasas</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 ml-2">4.4 (56)</span>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-12 flex justify-center">
+                <div class="flex space-x-2">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white">1</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100">2</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100">3</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Nutrition Information Modal -->
+    <div id="nutritionModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900">Información Nutricional</h3>
+                    <button id="closeModal"
+                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-center mb-6">
+                    <img src="https://readdy.ai/api/search-image?query=A%2520beautifully%2520plated%2520Mediterranean%2520bowl%2520with%2520quinoa%2520base%252C%2520grilled%2520chicken%252C%2520colorful%2520vegetables%252C%2520olives%252C%2520feta%2520cheese%252C%2520and%2520a%2520drizzle%2520of%2520olive%2520oil.%2520The%2520dish%2520is%2520presented%2520on%2520a%2520clean%2520white%2520plate%2520against%2520a%2520minimalist%2520light%2520background.%2520The%2520food%2520looks%2520fresh%252C%2520vibrant%252C%2520and%2520professionally%2520styled%2520with%2520natural%2520lighting%2520highlighting%2520the%2520textures%2520and%2520colors%2520of%2520the%2520ingredients.&width=200&height=200&seq=12359&orientation=squarish"
+                        alt="Mediterranean Bowl" class="w-24 h-24 object-cover rounded-lg">
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-gray-900">Bowl Mediterráneo</h4>
+                        <p class="text-gray-600">Quinoa, pollo a la parrilla, mix de verdes, tomates cherry, pepino,
+                            aceitunas y queso feta con aderezo de hierbas y limón.</p>
+                    </div>
+                </div>
+                <!-- Nutrition Summary -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl font-bold text-gray-900">450</div>
+                        <div class="text-sm text-gray-600">Calorías (kcal)</div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl font-bold text-gray-900">32g</div>
+                        <div class="text-sm text-gray-600">Proteínas</div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl font-bold text-gray-900">45g</div>
+                        <div class="text-sm text-gray-600">Carbohidratos</div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl font-bold text-gray-900">15g</div>
+                        <div class="text-sm text-gray-600">Grasas</div>
+                    </div>
+                </div>
+                <!-- Detailed Nutrition -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Información Nutricional Detallada</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Grasas Saturadas</span>
+                            <span class="font-medium text-gray-900">3.5g</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Grasas Trans</span>
+                            <span class="font-medium text-gray-900">0g</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Colesterol</span>
+                            <span class="font-medium text-gray-900">65mg</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Sodio</span>
+                            <span class="font-medium text-gray-900">620mg</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Carbohidratos Totales</span>
+                            <span class="font-medium text-gray-900">45g</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Fibra Dietética</span>
+                            <span class="font-medium text-gray-900">7g</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-700">Azúcares</span>
+                            <span class="font-medium text-gray-900">5g</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-gray-700">Proteínas</span>
+                            <span class="font-medium text-gray-900">32g</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ingredients -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Ingredientes</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Quinoa orgánica</li>
+                        <li>Pechuga de pollo de corral</li>
+                        <li>Mix de hojas verdes (espinaca, rúcula, lechuga)</li>
+                        <li>Tomates cherry</li>
+                        <li>Pepino</li>
+                        <li>Aceitunas kalamata</li>
+                        <li>Queso feta</li>
+                        <li>Aceite de oliva extra virgen</li>
+                        <li>Jugo de limón</li>
+                        <li>Hierbas frescas (orégano, perejil)</li>
+                        <li>Sal marina y pimienta negra</li>
+                    </ul>
+                </div>
+                <!-- Allergens -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Alérgenos</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Lácteos (queso feta)</span>
+                    </div>
+                </div>
+                <!-- Preparation -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Información de Preparación</h4>
+                    <p class="text-gray-700">Mantener refrigerado. Consumir dentro de las 48 horas. Para mejor sabor,
+                        retirar del refrigerador 10 minutos antes de consumir. No apto para congelar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="text-3xl font-bold" style="font-family: 'Poppins', sans-serif;">
+                        <span class="text-[#FFFFFF]">sabro</span><span class="text-[#c2f409] italic">fit</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Comidas deliciosas y nutritivas entregadas en tu puerta. Haciendo que
+                        comer sano sea simple y agradable.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-facebook-fill text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-instagram-line text-white"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-twitter-x-line text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Nuestro Menú</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cómo Funciona</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Planes de Comidas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sobre Nosotros</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Trabajá con Nosotros</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contactanos</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+                                <i class="ri-map-pin-line text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-400">123 Av Siempreviva, Springfield, CP 5500</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                <i class="ri-phone-line text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-400">(+54) 261-234 456 78</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                <i class="ri-mail-line text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-400">hola@sabrofit.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Business Hours -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Horarios de Atención</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">Lunes a Viernes:</span>
+                            <span class="text-gray-400">8:00 a 20:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">Sábados:</span>
+                            <span class="text-gray-400">9:00 a 19:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">Domingos:</span>
+                            <span class="text-gray-400">10:00 a 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 SabroFit. Todos los derechos reservados.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition">Política de Privacidad</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition">Términos de Servicio</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-white transition">Política de Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/+5492615106696" target="_blank"
+            class="flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:bg-opacity-90 transition-all">
+            <i class="ri-whatsapp-line text-white text-2xl"></i>
+        </a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Menu filtering functionality
+            const filterButtons = document.querySelectorAll('[id^="filter"]');
+            const menuItems = document.querySelectorAll('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3.gap-8 > div');
+
+            function filterMenu(category) {
+                // Reset all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-gray-700');
+                });
+
+                // Highlight selected button
+                const selectedButton = document.getElementById(`filter${category}`);
+                if (selectedButton) {
+                    selectedButton.classList.remove('bg-gray-100', 'text-gray-700');
+                    selectedButton.classList.add('bg-primary', 'text-white');
+                }
+
+                // Filter menu items
+                menuItems.forEach(item => {
+                    const tags = item.querySelector('.absolute.top-3.left-3').textContent.toLowerCase();
+                    if (category === 'All' || tags.includes(category.toLowerCase())) {
+                        item.style.display = '';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                });
+            }
+
+            // Add click event listeners to filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.id.replace('filter', '');
+                    filterMenu(category);
+                });
+            });
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.ri-menu-line').parentElement;
+            const nav = document.querySelector('nav');
+            menuButton.addEventListener('click', function () {
+                if (nav.classList.contains('hidden')) {
+                    nav.classList.remove('hidden');
+                    nav.classList.add('flex', 'flex-col', 'absolute', 'top-16', 'right-4', 'bg-white', 'shadow-lg', 'p-4', 'rounded-lg', 'space-y-4', 'w-48');
+                } else {
+                    nav.classList.add('hidden');
+                    nav.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'right-4', 'bg-white', 'shadow-lg', 'p-4', 'rounded-lg', 'space-y-4', 'w-48');
+                }
+            });
+            // Price range slider
+            const priceRange = document.getElementById('priceRange');
+            const priceRangeValue = document.getElementById('priceRangeValue');
+            if (priceRange && priceRangeValue) {
+                priceRange.addEventListener('input', function () {
+                    priceRangeValue.textContent = `$0 - $${this.value}`;
+                });
+            }
+            // Nutrition modal
+            const nutritionIcons = document.querySelectorAll('.ri-fire-line, .ri-meat-line, .ri-bread-line, .ri-drop-line');
+            const nutritionModal = document.getElementById('nutritionModal');
+            const closeModal = document.getElementById('closeModal');
+            nutritionIcons.forEach(icon => {
+                icon.parentElement.parentElement.addEventListener('click', function () {
+                    nutritionModal.classList.remove('hidden');
+                });
+            });
+            if (closeModal) {
+                closeModal.addEventListener('click', function () {
+                    nutritionModal.classList.add('hidden');
+                });
+            }
+            // Close modal when clicking outside
+            window.addEventListener('click', function (event) {
+                if (event.target === nutritionModal) {
+                    nutritionModal.classList.add('hidden');
+                }
+            });
+            // Add to cart functionality
+            const addButtons = document.querySelectorAll('button:not(#closeModal)');
+            const cartCount = document.querySelector('.absolute.bg-primary span');
+            let count = 0;
+            addButtons.forEach(button => {
+                if (button.textContent.trim() === 'Agregar') {
+                    button.addEventListener('click', function () {
+                        count++;
+                        cartCount.textContent = count;
+                        // Show feedback
+                        const originalText = button.textContent;
+                        button.textContent = 'Agregado ✓';
+                        button.classList.add('bg-green-500');
+                        button.classList.remove('bg-primary');
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.classList.remove('bg-green-500');
+                            button.classList.add('bg-primary');
+                        }, 1500);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
